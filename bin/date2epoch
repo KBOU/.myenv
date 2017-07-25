@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]; then
+    echo "Usage: $0 <date in \d{1,4}[-/]\d{1,2}[-/]\d{1,2}(?: \d{1,2}(?:\:\d{1,2}(?:\:\d{1,2}(?:\.\d+)?)?)?)? format>"
+    exit 1
+fi
+
+isodate=$1
+
+date --date="$isodate" +"%s%N" | cut -b1-13

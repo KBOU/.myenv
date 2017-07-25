@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]; then
+    echo "$0 <epoch in mills>"
+    exit 1
+fi
+
+epochinmills=$1
+
+perl -se 'use POSIX qw(strftime); print strftime("%Y-%m-%d %H:%M:%S", localtime($epochinmills / 1000)), ".", $epochinmills % 1000, "\n"' -- -epochinmills=$epochinmills
